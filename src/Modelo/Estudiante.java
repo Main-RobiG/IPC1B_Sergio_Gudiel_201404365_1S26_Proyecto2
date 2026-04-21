@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Modelo;
+package modelo;
 
-/**
- *
- * @author Sergio Gudiel
- */
-public class Estudiante {
-    
+public class Estudiante extends Usuario {
+
+    public Estudiante(String codigo, String nombre, String password) {
+        super(codigo, nombre, password);
+    }
 }

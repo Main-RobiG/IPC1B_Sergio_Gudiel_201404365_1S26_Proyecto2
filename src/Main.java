@@ -1,0 +1,17 @@
+import Vista.Login;
+
+import modelo.Administrador;
+import modelo.Datos;
+
+public class Main {
+    public static void main(String[] args) {
+
+       
+        Administrador admin = new Administrador("admin", "Admin", "IPC1B");     //Admin para prueba
+        Datos.agregarUsuario(admin);
+
+        
+        Login login = new Login();                                              //Ventana de Login
+        login.setVisible(true);
+    }
+}

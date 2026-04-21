@@ -1,13 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Modelo;
+package modelo;
 
-/**
- *
- * @author Sergio Gudiel
- */
-public class Usuario {
-    
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
+    protected String codigo;
+    protected String nombre;
+    protected String password;
+
+    public Usuario(String codigo, String nombre, String password) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.password = password;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
