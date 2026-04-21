@@ -9,6 +9,14 @@ public class Datos {
         usuarios[contadorUsuarios] = u;
         contadorUsuarios++;
     }
+    
+    public static Instructor[] instructor = new Instructor[100];
+    public static int contadorInstructor = 0;
+
+    public static void agregarInstructor(Usuario u) {                              //Agregar nuevo usuario
+        usuarios[contadorUsuarios] = u;
+        contadorUsuarios++;
+    }
 
     public static Usuario buscarUsuario(String codigo, String password) {       //Busca Usuario Agregado
         for (int i = 0; i < contadorUsuarios; i++) {
