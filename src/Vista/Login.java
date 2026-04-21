@@ -1,4 +1,4 @@
-package Vista;
+package vista;
 
 import modelo.Usuario;
 import modelo.Administrador;

@@ -28,4 +28,28 @@ public class Datos {
         }
         return false;
     }
+    
+    public static Usuario buscarPorCodigo(String codigo) {                      //metodo para buscar usuarios por codigo
+        for (int i = 0; i < contadorUsuarios; i++) {
+            if (usuarios[i].getCodigo().equals(codigo)) {
+                return usuarios[i];
+            }
+        }
+        return null;
+    }
+    
+    public static boolean eliminarUsuario(String codigo) {                      //Meetodo para Eliminar Usuarios
+        for (int i = 0; i < contadorUsuarios; i++) {
+            if (usuarios[i].getCodigo().equals(codigo)) {
+
+                for (int j = i; j < contadorUsuarios - 1; j++) {
+                    usuarios[j] = usuarios[j + 1];
+                }
+                contadorUsuarios--;
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

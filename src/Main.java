@@ -1,4 +1,4 @@
-import Vista.Login;
+import vista.Login;
 
 import modelo.Administrador;
 import modelo.Datos;

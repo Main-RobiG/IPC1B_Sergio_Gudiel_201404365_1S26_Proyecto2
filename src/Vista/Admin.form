@@ -44,10 +44,12 @@
                           <Component id="btnCrearInstructor" max="32767" attributes="0"/>
                           <Component id="btnCerrarSesion" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnCursos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEditarEstudiante" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnEliminarEstudiante" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,14 +61,18 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCrearEstudiante" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnEditarEstudiante" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnEliminarEstudiante" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnVerEstudiantes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCrearInstructor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCursos" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,6 +116,22 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Administrador"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEditarEstudiante">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar Estudiante"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarEstudianteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarEstudiante">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar Estudiante"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarEstudianteActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

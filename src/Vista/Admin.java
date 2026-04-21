@@ -1,9 +1,10 @@
 
-package Vista;
+package vista;
 
 import modelo.Datos;
 import modelo.Estudiante;
 import controlador.ControladorUsuario;
+import javax.swing.JOptionPane;
 
 public class Admin extends javax.swing.JFrame {
     
@@ -24,6 +25,8 @@ public class Admin extends javax.swing.JFrame {
         btnCursos = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnEditarEstudiante = new javax.swing.JButton();
+        btnEliminarEstudiante = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -44,6 +47,12 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel2.setText("Administrador");
 
+        btnEditarEstudiante.setText("Editar Estudiante");
+        btnEditarEstudiante.addActionListener(this::btnEditarEstudianteActionPerformed);
+
+        btnEliminarEstudiante.setText("Eliminar Estudiante");
+        btnEliminarEstudiante.addActionListener(this::btnEliminarEstudianteActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,8 +69,10 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(btnVerEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCrearInstructor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                            .addComponent(btnCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,14 +82,18 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnCrearEstudiante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditarEstudiante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminarEstudiante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerEstudiantes)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCrearInstructor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCursos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCerrarSesion)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,12 +125,39 @@ public class Admin extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnVerEstudiantesActionPerformed
 
+    private void btnEditarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstudianteActionPerformed
+        
+        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante:");
+        String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
+        String nuevaPass = JOptionPane.showInputDialog("Nueva contraseña:");
+        boolean resultado = ControladorUsuario.editarEstudiante(codigo, nuevoNombre, nuevaPass);
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Estudiante actualizado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
+        }
+    }//GEN-LAST:event_btnEditarEstudianteActionPerformed
+
+    private void btnEliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteActionPerformed
+       
+        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante a eliminar:");
+        boolean resultado = ControladorUsuario.eliminarEstudiante(codigo);
+        
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Estudiante eliminado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
+        }
+    }//GEN-LAST:event_btnEliminarEstudianteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCrearEstudiante;
     private javax.swing.JButton btnCrearInstructor;
     private javax.swing.JButton btnCursos;
+    private javax.swing.JButton btnEditarEstudiante;
+    private javax.swing.JButton btnEliminarEstudiante;
     private javax.swing.JButton btnVerEstudiantes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
