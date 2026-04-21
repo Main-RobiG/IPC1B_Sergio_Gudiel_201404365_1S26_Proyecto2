@@ -90,7 +90,9 @@ public class Login extends javax.swing.JFrame {
         
         if (u != null) {
             if (u instanceof Administrador) {
-                System.out.println("Bienvenido Admin");
+                Admin pan = new Admin();
+                pan.setVisible(true);
+                this.dispose(); // cierra login
             }
             else if (u instanceof Instructor) {
                 System.out.println("Bienvenido Instructor");
