@@ -2,22 +2,36 @@ package modelo;
 
 public class Datos {
 
+//------------------------------------INSTRUCTOR--------------------------------
+   
+    public static Instructor[] instructor = new Instructor[100];
+    public static int contadorInstructor = 0;
+
+    public static void agregarInstructor(Usuario u) {                           //constructor Instructor
+        usuarios[contadorUsuarios] = u;
+        contadorUsuarios++;
+    }
+    
+    public static Instructor buscarInstructor(String codigo) {                  //Buscar Instructor
+        for (int i = 0; i < contadorUsuarios; i++) {
+            if (usuarios[i] instanceof Instructor &&
+                    usuarios[i].getCodigo().equals(codigo)) {
+                return (Instructor) usuarios[i];
+            }
+        }
+        return null;
+    }    
+
+//--------------------------------USUARIO---------------------------------------
+        
     public static Usuario[] usuarios = new Usuario[100];
     public static int contadorUsuarios = 0;
-
+    
     public static void agregarUsuario(Usuario u) {                              //Agregar nuevo usuario
         usuarios[contadorUsuarios] = u;
         contadorUsuarios++;
     }
     
-    public static Instructor[] instructor = new Instructor[100];
-    public static int contadorInstructor = 0;
-
-    public static void agregarInstructor(Usuario u) {                              //Agregar nuevo usuario
-        usuarios[contadorUsuarios] = u;
-        contadorUsuarios++;
-    }
-
     public static Usuario buscarUsuario(String codigo, String password) {       //Busca Usuario Agregado
         for (int i = 0; i < contadorUsuarios; i++) {
             if (usuarios[i].getCodigo().equals(codigo) &&
@@ -59,5 +73,28 @@ public class Datos {
         }
         return false;
     }
+//----------------------------------------CURSOS------------------------------------   
+    
+    public static Curso[] cursos = new Curso[100];                              //constructor de los cursos
+    public static int contadorCursos = 0;
+    
+    public static void agregarCurso(Curso c) {
+        cursos[contadorCursos] = c;
+        contadorCursos++;
+    }
+    
+    public static Curso buscarCurso(String codigo) {
+        for (int i = 0; i < contadorCursos; i++) {
+            if (cursos[i].getCodigo().equals(codigo)) {
+                return cursos[i];
+            }
+        }
+        return null;
+    }
+    
+
+    
     
 }
+
+
