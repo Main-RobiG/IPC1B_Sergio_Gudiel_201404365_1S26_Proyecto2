@@ -1,17 +1,13 @@
-
 package vista;
 
-import modelo.Datos;
-import modelo.Estudiante;
-import modelo.Instructor;
-import controlador.ControladorCurso;
+import javax.swing.JOptionPane;
 import controlador.ControladorUsuario;
+import controlador.ControladorCurso;
 import controlador.ControladorSerializador;
 import controlador.ControladorCSV;
-import javax.swing.JOptionPane;
 
 public class Admin extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Admin.class.getName());
 
     public Admin() {
@@ -36,14 +32,18 @@ public class Admin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        javax.swing.JButton btnCrearCurso = new javax.swing.JButton();
-        javax.swing.JButton btnVerCurso = new javax.swing.JButton();
+        btnCrearCurso = new javax.swing.JButton();
+        btnVerCurso = new javax.swing.JButton();
         btnAsignarNota = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btnVerNota = new javax.swing.JButton();
         btnExportarDatos = new javax.swing.JButton();
         btnGuardarDatos = new javax.swing.JButton();
-        javax.swing.JButton btnAsignerCurso = new javax.swing.JButton();
+        btnAsignerCurso = new javax.swing.JButton();
+        btnGestionarEstudiantes = new javax.swing.JButton();
+        btnGestionarInstructores = new javax.swing.JButton();
+        btnGestionarCursos = new javax.swing.JButton();
+        btnGestionarNotas = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -106,6 +106,18 @@ public class Admin extends javax.swing.JFrame {
         btnAsignerCurso.setText("Asignar a Curso");
         btnAsignerCurso.addActionListener(this::btnAsignerCursoActionPerformed);
 
+        btnGestionarEstudiantes.setText("Gestionar Estudiantes");
+        btnGestionarEstudiantes.addActionListener(this::btnGestionarEstudiantesActionPerformed);
+
+        btnGestionarInstructores.setText("Gestionar Instructores");
+        btnGestionarInstructores.addActionListener(this::btnGestionarInstructoresActionPerformed);
+
+        btnGestionarCursos.setText("Gestionar Cursos");
+        btnGestionarCursos.addActionListener(this::btnGestionarCursosActionPerformed);
+
+        btnGestionarNotas.setText("Reportes / Notas");
+        btnGestionarNotas.addActionListener(this::btnGestionarNotasActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,12 +170,21 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGestionarInstructores)
+                    .addComponent(btnGestionarCursos)
+                    .addComponent(btnGestionarEstudiantes))
+                .addGap(238, 238, 238)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnExportarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarDatos))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGestionarNotas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -207,66 +228,143 @@ public class Admin extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(btnAsignerCurso)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(btnExportarDatos)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportarDatos)
+                    .addComponent(btnGestionarEstudiantes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCerrarSesion)
-                        .addGap(55, 55, 55))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGuardarDatos)
-                        .addGap(64, 64, 64))))
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGestionarInstructores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGestionarCursos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGestionarNotas)
+                            .addComponent(btnCerrarSesion))
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEstudianteActionPerformed
-        
-        String codigo = javax.swing.JOptionPane.showInputDialog("Codigo:");
-        String nombre = javax.swing.JOptionPane.showInputDialog("Nombre:");
-        String password = javax.swing.JOptionPane.showInputDialog("Password:");
-        
-        if(!Datos.existeUsuario(codigo)){
-            Estudiante e = new Estudiante(codigo, nombre, password);
-            Datos.agregarUsuario(e);
-            javax.swing.JOptionPane.showMessageDialog(this, "Estudiante Creado");
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(this, "Codigo ya existe");
-        }                
-    }//GEN-LAST:event_btnCrearEstudianteActionPerformed
+    private void btnExportarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarDatosActionPerformed
 
-    private void btnVerEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEstudiantesActionPerformed
+        String codCurso = JOptionPane.showInputDialog("Codigo del curso:");
+        String ruta = "notas_" + codCurso + ".csv";
 
-        String lista = ControladorUsuario.obtenerEstudiantes();
-        javax.swing.JOptionPane.showMessageDialog(this, lista);
-      
-    }//GEN-LAST:event_btnVerEstudiantesActionPerformed
+        ControladorCSV.exportarNotasCurso(codCurso, ruta);
+        JOptionPane.showMessageDialog(this, "CSV generado en el proyecto");
+    }//GEN-LAST:event_btnExportarDatosActionPerformed
 
-    private void btnEditarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstudianteActionPerformed
-        
-        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante:");
-        String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
-        String nuevaPass = JOptionPane.showInputDialog("Nueva contraseña:");
-        boolean resultado = ControladorUsuario.editarEstudiante(codigo, nuevoNombre, nuevaPass);
-        if (resultado) {
-            JOptionPane.showMessageDialog(this, "Estudiante actualizado");
-        } else {
-            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
+    private void btnGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDatosActionPerformed
+
+        ControladorSerializador.guardarDatos("datos.ser");
+        JOptionPane.showMessageDialog(this, "Datos guardados");
+    }//GEN-LAST:event_btnGuardarDatosActionPerformed
+
+    private void btnGestionarEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarEstudiantesActionPerformed
+        new PanelEstudiantes().setVisible(true);
+    }//GEN-LAST:event_btnGestionarEstudiantesActionPerformed
+
+    private void btnGestionarInstructoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarInstructoresActionPerformed
+        new PanelCatedraticos().setVisible(true);
+    }//GEN-LAST:event_btnGestionarInstructoresActionPerformed
+
+    private void btnGestionarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarCursosActionPerformed
+        new PanelCursos().setVisible(true);
+    }//GEN-LAST:event_btnGestionarCursosActionPerformed
+
+    private void btnGestionarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarNotasActionPerformed
+        new PanelNotas().setVisible(true);
+    }//GEN-LAST:event_btnGestionarNotasActionPerformed
+
+    private void btnVerNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerNotaActionPerformed
+
+        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
+        String lista = ControladorCurso.verNotasCurso(codCurso);
+        JOptionPane.showMessageDialog(this, lista);
+    }//GEN-LAST:event_btnVerNotaActionPerformed
+
+    private void btnAsignarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarNotaActionPerformed
+
+        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
+        String codEst = JOptionPane.showInputDialog("Codigo estudiante:");
+        String input = JOptionPane.showInputDialog("Nota:");
+        double nota;
+
+        try {
+            nota = Double.parseDouble(input);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Nota invalida");
+            return;
         }
-    }//GEN-LAST:event_btnEditarEstudianteActionPerformed
 
-    private void btnEliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteActionPerformed
-       
-        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante a eliminar:");
-        boolean resultado = ControladorUsuario.eliminarEstudiante(codigo);
-        
-        if (resultado) {
-            JOptionPane.showMessageDialog(this, "Estudiante eliminado");
+        boolean ok = ControladorCurso.asignarNota(codCurso, codEst, nota);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Nota asignada");
         } else {
-            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
+            JOptionPane.showMessageDialog(this, "Error inesperado, tomar en cuenta");
         }
-    }//GEN-LAST:event_btnEliminarEstudianteActionPerformed
+    }//GEN-LAST:event_btnAsignarNotaActionPerformed
+
+    private void btnAsignerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignerCursoActionPerformed
+
+        String codCurso = JOptionPane.showInputDialog("Codigo del curso:");
+        String codEst = JOptionPane.showInputDialog("Codigo del estudiante:");
+
+        boolean ok = ControladorCurso.inscribirEstudiante(codCurso, codEst);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Inscripción exitosa");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error: curso lleno, estudiante no existe o ya inscrito");
+        }
+    }//GEN-LAST:event_btnAsignerCursoActionPerformed
+
+    private void btnVerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCursoActionPerformed
+
+        String lista = ControladorCurso.obtenerCursos();
+        JOptionPane.showMessageDialog(this, lista);
+
+    }//GEN-LAST:event_btnVerCursoActionPerformed
+
+    private void btnCrearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCursoActionPerformed
+
+        String codigo = JOptionPane.showInputDialog("Codigo del curso:");
+        String nombre = JOptionPane.showInputDialog("Nombre del curso:");
+        int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Capacidad:"));
+        String codInstructor = JOptionPane.showInputDialog("Codigo del instructor:");
+
+        boolean ok = ControladorCurso.crearCurso(codigo, nombre, capacidad, codInstructor);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Curso creado");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error: curso repetido o instructor no existe");
+        }
+    }//GEN-LAST:event_btnCrearCursoActionPerformed
+
+    private void btnVerInstructoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInstructoresActionPerformed
+
+        String lista = ControladorUsuario.obtenerInstructores();
+        JOptionPane.showMessageDialog(this, lista);
+    }//GEN-LAST:event_btnVerInstructoresActionPerformed
+
+    private void btnEliminarInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInstructorActionPerformed
+
+        String codigo = JOptionPane.showInputDialog("Ingrese codigo del Catedratico a eliminar:");
+        boolean resultado = ControladorUsuario.eliminarInstructor(codigo);
+
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Instructor eliminado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No existe o no es Instructor");
+        }
+    }//GEN-LAST:event_btnEliminarInstructorActionPerformed
 
     private void btnEditarInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarInstructorActionPerformed
 
@@ -281,125 +379,74 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarInstructorActionPerformed
 
-    private void btnEliminarInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInstructorActionPerformed
-      
-        String codigo = JOptionPane.showInputDialog("Ingrese codigo del Catedratico a eliminar:");
-        boolean resultado = ControladorUsuario.eliminarInstructor(codigo);
-        
-        if (resultado) {
-            JOptionPane.showMessageDialog(this, "Instructor eliminado");
-        } else {
-            JOptionPane.showMessageDialog(this, "No existe o no es Instructor");
-        }
-    }//GEN-LAST:event_btnEliminarInstructorActionPerformed
-
-    private void btnVerInstructoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInstructoresActionPerformed
-
-        String lista = ControladorUsuario.obtenerInstructores();
-        JOptionPane.showMessageDialog(this, lista);
-    }//GEN-LAST:event_btnVerInstructoresActionPerformed
-
     private void btnCrearInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearInstructorActionPerformed
-        
-        String codigo = javax.swing.JOptionPane.showInputDialog("Codigo:");
-        String nombre = javax.swing.JOptionPane.showInputDialog("Nombre:");
-        String password = javax.swing.JOptionPane.showInputDialog("Password:");
-        
-        if(!Datos.existeUsuario(codigo)){
-            Instructor i = new Instructor(codigo, nombre, password);
-            Datos.agregarUsuario(i);
-            javax.swing.JOptionPane.showMessageDialog(this, "Estudiante Creado");
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(this, "Codigo ya existe");
+
+        String codigo = JOptionPane.showInputDialog("Codigo:");
+        String nombre = JOptionPane.showInputDialog("Nombre:");
+        String password = JOptionPane.showInputDialog("Password:");
+
+        boolean ok = ControladorUsuario.crearInstructor(codigo, nombre, password);
+
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Instructor creado");
+        } else {
+            JOptionPane.showMessageDialog(this, "Codigo ya existe");
         }
     }//GEN-LAST:event_btnCrearInstructorActionPerformed
 
-    private void btnCrearCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCursoActionPerformed
+    private void btnVerEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEstudiantesActionPerformed
 
-        String codigo = JOptionPane.showInputDialog("Codigo del curso:");
-        String nombre = JOptionPane.showInputDialog("Nombre del curso:");
-        int capacidad = Integer.parseInt(JOptionPane.showInputDialog("Capacidad:"));
-        String codInstructor = JOptionPane.showInputDialog("Codigo del instructor:");
-        
-        boolean ok = ControladorCurso.crearCurso(codigo, nombre, capacidad, codInstructor);
-        
-        if (ok) {
-            JOptionPane.showMessageDialog(this, "Curso creado");
+        String lista = ControladorUsuario.obtenerEstudiantes();
+        javax.swing.JOptionPane.showMessageDialog(this, lista);
+
+    }//GEN-LAST:event_btnVerEstudiantesActionPerformed
+
+    private void btnEliminarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteActionPerformed
+
+        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante a eliminar:");
+        boolean resultado = ControladorUsuario.eliminarEstudiante(codigo);
+
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Estudiante eliminado");
         } else {
-            JOptionPane.showMessageDialog(this, "Error: curso repetido o instructor no existe");
+            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
         }
-    }//GEN-LAST:event_btnCrearCursoActionPerformed
+    }//GEN-LAST:event_btnEliminarEstudianteActionPerformed
 
-    private void btnVerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerCursoActionPerformed
+    private void btnEditarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstudianteActionPerformed
 
-        String lista = ControladorCurso.obtenerCursos();
-        JOptionPane.showMessageDialog(this, lista);
-        
-    }//GEN-LAST:event_btnVerCursoActionPerformed
-
-    private void btnAsignarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarNotaActionPerformed
-
-        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
-        String codEst = JOptionPane.showInputDialog("Codigo estudiante:");
-        String input = JOptionPane.showInputDialog("Nota:");
-        double nota;
-        
-        try {
-            nota = Double.parseDouble(input);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Nota invalida");
-            return;
-        }
-        
-        boolean ok = ControladorCurso.asignarNota(codCurso, codEst, nota);
-        
-        if (ok) {
-            JOptionPane.showMessageDialog(this, "Nota asignada");
+        String codigo = JOptionPane.showInputDialog("Ingrese codigo del estudiante:");
+        String nuevoNombre = JOptionPane.showInputDialog("Nuevo nombre:");
+        String nuevaPass = JOptionPane.showInputDialog("Nueva contraseña:");
+        boolean resultado = ControladorUsuario.editarEstudiante(codigo, nuevoNombre, nuevaPass);
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Estudiante actualizado");
         } else {
-            JOptionPane.showMessageDialog(this, "Error inesperado, tomar en cuenta");
+            JOptionPane.showMessageDialog(this, "No existe o no es estudiante");
         }
-    }//GEN-LAST:event_btnAsignarNotaActionPerformed
+    }//GEN-LAST:event_btnEditarEstudianteActionPerformed
 
-    private void btnVerNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerNotaActionPerformed
+    private void btnCrearEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEstudianteActionPerformed
 
-        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
-        String lista = ControladorCurso.verNotasCurso(codCurso);
-        JOptionPane.showMessageDialog(this, lista);
-    }//GEN-LAST:event_btnVerNotaActionPerformed
+        String codigo = JOptionPane.showInputDialog("Codigo:");
+        String nombre = JOptionPane.showInputDialog("Nombre:");
+        String password = JOptionPane.showInputDialog("Password:");
 
-    private void btnExportarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarDatosActionPerformed
+        boolean ok = ControladorUsuario.crearEstudiante(codigo, nombre, password);
 
-        String codCurso = JOptionPane.showInputDialog("Codigo del curso:");
-        String ruta = "notas_" + codCurso + ".csv";
-        
-        ControladorCSV.exportarNotasCurso(codCurso, ruta);
-        JOptionPane.showMessageDialog(this, "CSV generado en el proyecto");
-    }//GEN-LAST:event_btnExportarDatosActionPerformed
-
-    private void btnGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarDatosActionPerformed
-        
-        ControladorSerializador.guardarDatos("datos.ser");
-        JOptionPane.showMessageDialog(this, "Datos guardados");
-    }//GEN-LAST:event_btnGuardarDatosActionPerformed
-
-    private void btnAsignerCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignerCursoActionPerformed
-
-        String codCurso = JOptionPane.showInputDialog("Codigo del curso:");
-        String codEst = JOptionPane.showInputDialog("Codigo del estudiante:");
-        
-        boolean ok = ControladorCurso.inscribirEstudiante(codCurso, codEst);
-        
         if (ok) {
-            JOptionPane.showMessageDialog(this, "Inscripción exitosa");
+            JOptionPane.showMessageDialog(this, "Estudiante creado");
         } else {
-            JOptionPane.showMessageDialog(this, "Error: curso lleno, estudiante no existe o ya inscrito");
+            JOptionPane.showMessageDialog(this, "Codigo ya existe");
         }
-    }//GEN-LAST:event_btnAsignerCursoActionPerformed
+    }//GEN-LAST:event_btnCrearEstudianteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarNota;
+    private javax.swing.JButton btnAsignerCurso;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCrearCurso;
     private javax.swing.JButton btnCrearEstudiante;
     private javax.swing.JButton btnCrearInstructor;
     private javax.swing.JButton btnEditarEstudiante;
@@ -407,7 +454,12 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarEstudiante;
     private javax.swing.JButton btnEliminarInstructor;
     private javax.swing.JButton btnExportarDatos;
+    private javax.swing.JButton btnGestionarCursos;
+    private javax.swing.JButton btnGestionarEstudiantes;
+    private javax.swing.JButton btnGestionarInstructores;
+    private javax.swing.JButton btnGestionarNotas;
     private javax.swing.JButton btnGuardarDatos;
+    private javax.swing.JButton btnVerCurso;
     private javax.swing.JButton btnVerEstudiantes;
     private javax.swing.JButton btnVerInstructores;
     private javax.swing.JButton btnVerNota;

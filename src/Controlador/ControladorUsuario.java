@@ -4,6 +4,23 @@ import modelo.*;
 
 public class ControladorUsuario {
 
+    public static boolean crearEstudiante(String codigo, String nombre, String password){ // Controlador de Crear un Estudiante
+        
+        if (codigo == null || codigo.isEmpty() ||
+                nombre == null || nombre.isEmpty() ||
+                password == null || password.isEmpty()) {
+            return false;
+        }
+        
+        if (!Datos.existeUsuario(codigo)) {
+            Estudiante e = new Estudiante(codigo, nombre, password);
+            Datos.agregarUsuario(e);
+            return true;
+        }
+        return false;
+        
+    }
+    
     public static String obtenerEstudiantes() {                                 //Controlador Mostrar Estidiantes
         String lista = "";
 
@@ -82,5 +99,34 @@ public class ControladorUsuario {
         return false;
     }
     
+    public static Estudiante obtenerEstudiante(String codigo) {                 //metodo para obtener 1 estudiante
+        return Datos.buscarEstudiante(codigo);
+    }
     
+    public static Instructor obtenerInstructor(String codigo) {                 //metodo para obtener 1 Instructor
+        return Datos.buscarInstructor(codigo);
+    }
+    
+    public static String[] obtenerCodigosInstructores() {
+        
+        int contador = 0;
+        
+        for (int i = 0; i < Datos.contadorUsuarios; i++) {
+            if (Datos.usuarios[i] instanceof Instructor) {
+                contador++;
+            }
+        }
+        
+        String[] lista = new String[contador];
+        
+        int j = 0;
+        
+        for (int i = 0; i < Datos.contadorUsuarios; i++) {
+            if (Datos.usuarios[i] instanceof Instructor) {
+                lista[j++] = Datos.usuarios[i].getCodigo();
+            }
+        }
+        
+        return lista;
+    }
 }
