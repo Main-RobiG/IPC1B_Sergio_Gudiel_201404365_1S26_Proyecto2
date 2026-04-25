@@ -38,4 +38,51 @@ public class ControladorCurso {
         }
         return lista;
     }
+    
+    public static boolean inscribirEstudiante(String codCurso, String codEstudiante) {
+        
+        Curso c = Datos.buscarCurso(codCurso);
+        Estudiante e = Datos.buscarEstudiante(codEstudiante);
+        
+        if (c == null || e == null) {
+            return false;
+        }
+        return c.agregarEstudiante(e);
+    }
+    
+    public static String verEstudiantesCurso(String codCurso) {
+        Curso c = Datos.buscarCurso(codCurso);
+        
+        if (c != null) {
+            return c.listarEstudiantes();
+        }
+        
+        return "Curso no encontrado";
+    }
+    
+    public static boolean asignarNota(String codCurso, String codEst, double nota) {
+        
+        if (nota < 0 || nota > 100) {
+            return false;
+        }
+        
+        Curso c = Datos.buscarCurso(codCurso);
+        
+        if (c == null) {
+            return false;
+        }
+        return c.asignarNota(codEst, nota);
+    }
+    
+    public static String verNotasCurso(String codCurso) {
+        
+        Curso c = Datos.buscarCurso(codCurso);
+        
+        if (c != null) {
+            return c.verNotas();
+        }
+        
+        return "Curso no encontrado";
+    }
 }
+

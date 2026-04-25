@@ -91,6 +91,18 @@ public class Datos {
         }
         return null;
     }
+//------------------------------------Estudiantes-------------------------------
+
+    public static Estudiante buscarEstudiante(String codigo) {                  //Mmetodo para buscar estudiantes
+        for (int i = 0; i < contadorUsuarios; i++) {
+            if (usuarios[i] instanceof Estudiante &&
+                    usuarios[i].getCodigo().equals(codigo)) {
+                return (Estudiante) usuarios[i];
+            }
+        }
+        return null;
+    }
+    
     
 
     

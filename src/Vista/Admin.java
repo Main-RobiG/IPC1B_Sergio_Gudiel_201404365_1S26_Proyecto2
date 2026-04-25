@@ -37,6 +37,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         javax.swing.JButton btnCrearCurso = new javax.swing.JButton();
         javax.swing.JButton btnVerCurso = new javax.swing.JButton();
+        btnAsignarNota = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        btnVerNota = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -85,6 +88,14 @@ public class Admin extends javax.swing.JFrame {
         btnVerCurso.setText("Ver Curso");
         btnVerCurso.addActionListener(this::btnVerCursoActionPerformed);
 
+        btnAsignarNota.setText("Asignar Notas");
+        btnAsignarNota.addActionListener(this::btnAsignarNotaActionPerformed);
+
+        jLabel6.setText("Notas");
+
+        btnVerNota.setText("Ver Notas");
+        btnVerNota.addActionListener(this::btnVerNotaActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,16 +132,24 @@ public class Admin extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(17, 17, 17)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnCrearCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVerCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(84, 84, 84))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(108, 108, 108))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnVerNota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAsignarNota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCrearCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnVerCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(84, 84, 84))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,11 +175,20 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarInstructor)
                     .addComponent(btnEliminarEstudiante))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnVerInstructores)
+                            .addComponent(btnVerEstudiantes)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAsignarNota)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerInstructores)
-                    .addComponent(btnVerEstudiantes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(btnVerNota)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCursos)
                     .addComponent(btnCerrarSesion))
@@ -290,8 +318,39 @@ public class Admin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnVerCursoActionPerformed
 
+    private void btnAsignarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarNotaActionPerformed
+
+        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
+        String codEst = JOptionPane.showInputDialog("Codigo estudiante:");
+        String input = JOptionPane.showInputDialog("Nota:");
+        double nota;
+        
+        try {
+            nota = Double.parseDouble(input);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Nota invalida");
+            return;
+        }
+        
+        boolean ok = ControladorCurso.asignarNota(codCurso, codEst, nota);
+        
+        if (ok) {
+            JOptionPane.showMessageDialog(this, "Nota asignada");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error inesperado, tomar en cuenta");
+        }
+    }//GEN-LAST:event_btnAsignarNotaActionPerformed
+
+    private void btnVerNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerNotaActionPerformed
+
+        String codCurso = JOptionPane.showInputDialog("Codigo curso:");
+        String lista = ControladorCurso.verNotasCurso(codCurso);
+        JOptionPane.showMessageDialog(this, lista);
+    }//GEN-LAST:event_btnVerNotaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAsignarNota;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCrearEstudiante;
     private javax.swing.JButton btnCrearInstructor;
@@ -302,10 +361,12 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarInstructor;
     private javax.swing.JButton btnVerEstudiantes;
     private javax.swing.JButton btnVerInstructores;
+    private javax.swing.JButton btnVerNota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
