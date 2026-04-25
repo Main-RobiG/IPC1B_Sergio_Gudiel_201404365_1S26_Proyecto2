@@ -1,12 +1,14 @@
 package modelo;
 
-public class Curso {
+import java.io.Serializable;
+
+public class Curso implements Serializable {
     
     private String codigo;
     private String nombre;
     private int capacidad;
     private Instructor instructor;
-    private Estudiante[] estudiantes = new Estudiante[50];
+    private Estudiante[] estudiantes = new Estudiante[50];                      //50 estudiantes por curso
     private int contadorEstudiantes = 0;
     private double[] notas = new double[50];
     
@@ -16,7 +18,9 @@ public class Curso {
         this.capacidad = capacidad;
         this.instructor = instructor;
     }
-
+    
+//-------------------------------------------------------------------------------
+    
     public String getCodigo() {
         return codigo;
     }
@@ -44,6 +48,8 @@ public class Curso {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
+    
+//--------------------------------------------------------------------------------    
     
     public boolean agregarEstudiante(Estudiante e) {
         
@@ -94,5 +100,17 @@ public class Curso {
                     notas[i] + "\n";
         }    
         return lista;
+    }
+ //-------------------------------------------------------------------------------   
+    public Estudiante[] getEstudiantes() {
+        return estudiantes;
+    }
+    
+    public double[] getNotas() {
+    return notas;
+    }
+    
+    public int getContadorEstudiantes() {
+        return contadorEstudiantes;
     }
 }

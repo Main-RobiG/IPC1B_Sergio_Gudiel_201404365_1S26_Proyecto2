@@ -2,10 +2,12 @@ import vista.Login;
 
 import modelo.Administrador;
 import modelo.Datos;
+import controlador.ControladorSerializador;
 
 public class Main {
     public static void main(String[] args) {
-
+        
+        ControladorSerializador.cargarDatos("datos.ser");
        
         Administrador admin = new Administrador("admin", "Admin", "IPC1B");     //Admin para prueba
         Datos.agregarUsuario(admin);
