@@ -138,11 +138,13 @@
                   <Component id="btnAsignarNota" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnVerCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnEditarEstudiante" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="btnEditarInstructor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnVerNota" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnVerCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEditarInstructor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVerNota" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">

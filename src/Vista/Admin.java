@@ -32,14 +32,14 @@ public class Admin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnCrearCurso = new javax.swing.JButton();
-        btnVerCurso = new javax.swing.JButton();
+        javax.swing.JButton btnCrearCurso = new javax.swing.JButton();
+        javax.swing.JButton btnVerCurso = new javax.swing.JButton();
         btnAsignarNota = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btnVerNota = new javax.swing.JButton();
         btnExportarDatos = new javax.swing.JButton();
         btnGuardarDatos = new javax.swing.JButton();
-        btnAsignerCurso = new javax.swing.JButton();
+        javax.swing.JButton btnAsignerCurso = new javax.swing.JButton();
         btnGestionarEstudiantes = new javax.swing.JButton();
         btnGestionarInstructores = new javax.swing.JButton();
         btnGestionarCursos = new javax.swing.JButton();
@@ -209,11 +209,12 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(btnCrearCurso)
                     .addComponent(btnAsignarNota))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerCurso)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEditarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarInstructor)
-                    .addComponent(btnVerNota))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnVerCurso)
+                        .addComponent(btnEditarInstructor)
+                        .addComponent(btnVerNota)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -444,9 +445,7 @@ public class Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarNota;
-    private javax.swing.JButton btnAsignerCurso;
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnCrearCurso;
     private javax.swing.JButton btnCrearEstudiante;
     private javax.swing.JButton btnCrearInstructor;
     private javax.swing.JButton btnEditarEstudiante;
@@ -459,7 +458,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnGestionarInstructores;
     private javax.swing.JButton btnGestionarNotas;
     private javax.swing.JButton btnGuardarDatos;
-    private javax.swing.JButton btnVerCurso;
     private javax.swing.JButton btnVerEstudiantes;
     private javax.swing.JButton btnVerInstructores;
     private javax.swing.JButton btnVerNota;

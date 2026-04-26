@@ -16,7 +16,7 @@ public class FormEstudiante extends javax.swing.JFrame {
     public FormEstudiante(String codigo, String nombre, String pass) {
         initComponents();
         txtCodigo.setText(codigo);
-        txtNombre.setText(nombre);
+        txtEstudiante.setText(nombre);
         txtPass.setText(pass);
 
         txtCodigo.setEditable(false);
@@ -29,7 +29,7 @@ public class FormEstudiante extends javax.swing.JFrame {
 
         btnGuardar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtEstudiante = new javax.swing.JTextField();
         txtPass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,7 +61,7 @@ public class FormEstudiante extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -78,7 +78,7 @@ public class FormEstudiante extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -95,7 +95,7 @@ public class FormEstudiante extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         String codigo = txtCodigo.getText();
-        String nombre = txtNombre.getText();
+        String nombre = txtEstudiante.getText();
         String pass = txtPass.getText();
 
         boolean ok;
@@ -121,7 +121,7 @@ public class FormEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtEstudiante;
     private javax.swing.JTextField txtPass;
     // End of variables declaration//GEN-END:variables
 }
