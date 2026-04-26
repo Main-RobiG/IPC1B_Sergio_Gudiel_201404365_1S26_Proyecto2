@@ -86,10 +86,8 @@ public class PanelNotas extends javax.swing.JFrame {
 
         String curso = JOptionPane.showInputDialog("Código del curso:");
         if (curso == null || curso.isEmpty()) return;
-        
-        txtArea.setText(
-                ControladorCurso.verNotasCurso(curso)
-        );
+        String notas = ControladorCurso.verNotasCurso(curso);
+        JOptionPane.showMessageDialog(this, notas.isEmpty() ? "Sin notas" : notas);
     }//GEN-LAST:event_btnVerNotaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -98,6 +96,4 @@ public class PanelNotas extends javax.swing.JFrame {
     private javax.swing.JButton btnVerNota;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    private javax.swing.JTextArea txtArea;
-    private javax.swing.JScrollPane jScrollPane1;
 }
